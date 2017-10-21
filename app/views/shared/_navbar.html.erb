@@ -8,5 +8,22 @@
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home</a></li>
         </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <%if user_signed_in? %>
+          <li>
+            <a href="#">Hola! <%=current_user.email%></a>
+          </li>
+          <li>
+            <%= link_to 'Cerrar Sesion', destroy_user_session_path, method: :delete%>
+          </li>
+          <%else%>
+          <li>
+            <%= link_to 'Iniciar Sesion', new_user_session_path%>
+          </li>
+          <li>
+            <%= link_to 'Registrarse', new_user_registration_path%>
+          </li>
+          <%end%>
+        </ul>
       </div>
     </nav>
