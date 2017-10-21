@@ -11,7 +11,7 @@
         <ul class="nav navbar-nav navbar-right">
           <%if user_signed_in? %>
           <li>
-            <a href="#">Hola! <%=current_user.email%></a>
+            <a href="#">Hola! <%=current_user.name%></a>
           </li>
           <li>
             <%= link_to 'Cerrar Sesion', destroy_user_session_path, method: :delete%>

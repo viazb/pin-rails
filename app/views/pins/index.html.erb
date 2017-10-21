@@ -1,6 +1,9 @@
+
 <h1>Pins</h1>
 
+<% if user_signed_in? %>
 <%= link_to 'New Pin', new_pin_path, class: 'btn btn-primary btn-new' %>
+<% end %>
 
 <div class="row">
   <%  @pins.each do |pin|%>
@@ -17,7 +20,4 @@
   </div>
   <%end%>
 </div>
-
-
-
 <br>
