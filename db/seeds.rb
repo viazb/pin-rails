@@ -9,6 +9,8 @@
 Pin.destroy_all
 p = [600,700,800,1000,1200,1400]
 
-20.times do |i|
-    Pin.create(titile:"Pin número #{i+1}", image: "http://lorempixel.com/#{p.sample}/#{p.sample}")
+if User.last.present?
+  20.times do |i|
+      Pin.create(titile:"Pin número #{i+1}", image: "http://lorempixel.com/#{p.sample}/#{p.sample}", user: User.last)
+  end
 end
