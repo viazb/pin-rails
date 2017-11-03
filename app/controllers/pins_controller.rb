@@ -25,6 +25,8 @@ class PinsController < ApplicationController
   # POST /pins.json
   def create
     @pin = Pin.new(pin_params)
+    #se añade referencia de usuario. se le indica que el pin es del usuario logeado.
+    @pin.user = current_user
 
     respond_to do |format|
       if @pin.save
