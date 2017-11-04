@@ -2,19 +2,18 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    # Define abilities for the passed in user here. For example:
-    #
-    # ||= significa que si usuario esta definido lo mantiene sino crea uno nuevo
-      user ||= User.new(role: 2) # manejo de vistas el role 2 es gues
-       if user.admin?
-         can :manage, :all
-       elsif user.author?
-         can :read, :all
-         can :create, Pin
-         can [:destroy, :update], Pin, user_id: user.id # solo puede borrar cuando sean del usuario
-       elsif user.guest?
-         can :read, :all
-       end
+   # Define abilities for the passed in user here. For example:
+   #
+     user ||= User.new(role: 2) # Manejo de visitas
+     if user.admin?
+       can :manage, :all
+     elsif user.author?
+       can :read, :all
+       can :create, Pin
+       can [:destroy, :update], Pin, user_id: user.id
+     elsif user.guest?
+       can :read, :all
+     end
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.
