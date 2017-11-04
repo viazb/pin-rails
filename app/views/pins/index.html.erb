@@ -1,7 +1,7 @@
 
 <h1>Pins</h1>
 
-<% if user_signed_in? %>
+<% if can? :create, Pin %>
 <%= link_to 'New Pin', new_pin_path, class: 'btn btn-primary btn-new' %>
 <% end %>
 
@@ -12,9 +12,16 @@
       <div class="bloque">
         <%= image_tag pin.image, class:"img-responsive foto" %>
         <h5><%= pin.titile %></h5>
-        <%= link_to 'Show', pin, class: 'btn btn-primary btn-xs' %>
-        <%= link_to 'Edit', edit_pin_path(pin), class: 'btn btn-info btn-xs' %>
-        <%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs'%>
+        <% if can? :read, pin %>
+          <%= link_to 'Show', pin, class: 'btn btn-primary btn-xs' %>
+        <% end %>
+        <% if can? :update, pin %>
+          <%= link_to 'Edit', edit_pin_path(pin), class: 'btn btn-info btn-xs' %>
+        <% end %>
+        <% if can? :destroy, pin %>
+          <%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs'%>
+        <% end %>
+
       </div>
     </div>
   </div>

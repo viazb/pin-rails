@@ -1,5 +1,7 @@
 class PinsController < ApplicationController
   before_action :set_pin, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource #prohibe la coneccion a traves de url
+  
 
   # GET /pins
   # GET /pins.json
