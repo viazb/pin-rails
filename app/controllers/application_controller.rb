@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
           respond_to do |format|
-            format.html { redirect_to root_path, notice: 'No tienes acceso a esta página!' }
+            format.html { redirect_to root_path, notice: 'No tienes acceso a esta página!!!' }
           end
       end
 
